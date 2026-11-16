@@ -1,0 +1,336 @@
+# Ejercicio 1
+'''
+def Funcion(frase):
+    acronimo = ""
+    for letra in frase:
+        if letra.isupper():
+            acronimo += letra
+    return acronimo
+
+assert (Funcion(Instituto Nacional de Tecnología Inddustrial) == "INTI")
+'''
+# Ejercicio 2
+'''
+def Unspace(frase):
+    resultado=''
+    for letra in frase:
+        if letra != ' ':
+            resultado+=letra
+    return print(resultado)
+
+assert(Unspace('ho la mu n do') == 'holamundo')
+assert(Unspace('T o m a t e) == 'Tomate')
+assert(Unspace('T e l e v i s i ó n') != 'Tele visión')
+'''
+# Ejercicio 3
+'''
+def camelCase(frase):
+    solucion = ''
+    for i in range(len(frase)):
+        if frase[i] != ' ':
+            if i > 0 and frase[i-1] == ' ':
+                solucion += frase[i].upper()
+            else:
+                solucion += frase[i].lower()
+    return solucion
+
+frase = camelCase(input('Di algo: '))
+print(frase)
+'''
+# Ejercicio 4
+'''
+def RotarNPosiciones(cadena, rotado):
+    resultado = ''
+    for i in range(rotado-rotado+1):
+        resultado+=cadena[-rotado+i:]
+    for j in range(len(cadena)-rotado):
+        resultado+=cadena[j]
+    return print(resultado)
+
+palabra = RotarNPosiciones(input('Dí una palabra: '), int(input('Nº veces rotado: ')))
+'''
+# Ejercicio 5
+'''
+def charactersInString(string, character):
+    total = 0
+    for i in range(len(string)):
+        if string[i].upper() == character.upper():
+            total+=1
+    return total
+
+assert (charactersInString('This string contains 4 characters of "A".', 'a') == 4)
+assert (charactersInString('This string contains 4 characters of "i".', 'I') == 4)
+assert (charactersInString('This string contains 4 characters of "n".', 'n') == 4)
+assert (charactersInString('This string contains 0 characters of that character.', 'X') == 0)
+'''
+# Ejercicio 6
+'''
+def lowCaseInString(string):
+    total = 0
+    for i in range(len(string)):
+        if string[i].lower() == string[i]:
+            total+=1
+    return total
+
+assert (lowCaseInString('This String contains 32 character!') == 32)
+assert (lowCaseInString('And this one has 19.') == 19)
+assert (lowCaseInString('AND THIS ONE ONLY COUNTS THE SPACES AND OTHER CHARACTERS THAT ARENT THESE WORDS (ONLY 20).') == 20)
+'''
+# Ejercicio 7
+'''
+def numberInString(string):
+    total = 0
+    for i in range(len(string)):
+        if string[i] in '0123456789':
+            total+=1
+    return total
+
+assert(numberInString('Th1s 5tr1n6 c0n741n5 13 numb3r5!') == 13)
+assert(numberInString('W0w! H0w d1d y0u d0 7h47?!') == 8)
+assert(numberInString('345y! 1m u51n6 7h15 func710n 70 d0 17!') == 18)
+'''
+# Ejercicio 8
+'''
+def palindrome(string):
+    newString = ''
+    ogString = ''
+    result = False
+    for i in range(len(string)-1, -1, -1):
+        if string[i] != ' ':
+            newString+=string[i]
+    for j in range(len(string)):
+        if string[j] != ' ':
+            ogString+=string[j]
+    if newString.upper() == ogString.upper():
+        result = True
+    return result
+
+assert(palindrome('Se es o no se es'))
+assert(palindrome('Se VeRlAs Al ReVeS'))
+assert(palindrome('R e c o n o c e R'))
+assert(palindrome('11 22 33 44 55 44 33 22 11'))
+assert(not palindrome('No es palindromo'))
+assert(not palindrome('plaalp123'))
+assert(not palindrome('ABCDEFabcdef'))
+assert(not palindrome('Verdadero'))
+'''
+# Ejercicio 9
+'''
+def EncontrarPalabraOculta(texto, palabra):
+    resultado = False
+    juntarLaPalabra = ''
+    n = 0
+    for i in range(len(texto)):
+        if texto[i].upper() in palabra[n].upper() and not(juntarLaPalabra == palabra.upper()):
+            juntarLaPalabra+=texto[i].upper()
+            if len(palabra)-1 > n:
+                n+=1
+    if juntarLaPalabra == palabra.upper():
+        resultado = True
+    return resultado
+
+assert(EncontrarPalabraOculta('Supercalifragilisticoespialidoso', 'rapido'))
+assert(EncontrarPalabraOculta('Este texto esconde una palabra oculta...', 'TAROT'))
+assert(EncontrarPalabraOculta('E5te c0digo est4 ocul7o', '5047'))
+assert(EncontrarPalabraOculta('11h22O33l44a', 'hOlA'))
+assert(not EncontrarPalabraOculta('Este texto no tiene esa palabra', 'extraorinario'))
+assert(not EncontrarPalabraOculta('fuego aire tierra agua', 'elementos'))
+assert(not EncontrarPalabraOculta('E5e n0 3s el c0d160', '3575'))
+assert(not EncontrarPalabraOculta('No encontrarás la palabra', 'árbol'))
+'''
+# Ejercicio 10
+'''
+def CheckIfArmstrong(number):
+    result = False
+    number2 = 0
+    for i in range(len(number)):
+        number2+=int(number[i])**(len(number))
+    if number == str(number2):
+        result = True
+    return result
+
+assert(CheckIfArmstrong('153'))
+assert(CheckIfArmstrong('370'))
+assert(CheckIfArmstrong('371'))
+assert(CheckIfArmstrong('407'))
+assert(CheckIfArmstrong('93084'))
+assert(not CheckIfArmstrong('15'))
+assert(not CheckIfArmstrong('208'))
+assert(not CheckIfArmstrong('735'))
+assert(not CheckIfArmstrong('900'))
+assert(not CheckIfArmstrong('5690'))
+'''
+# Ejercicio 11 -- Tiene un fallito de na'
+'''
+def CheckIfArmstrong(number):
+    result = False
+    number2 = 0
+    for i in range(len(str(number))):
+        number2+=int(number[i])**(len(str(number)))
+    if number == str(number2):
+        result = True
+    return result
+
+n = 0
+while n < 999:
+    CheckIfArmstrong(n)
+    n+=1
+
+assert(CheckIfArmstrong('153'))
+assert(CheckIfArmstrong('370'))
+assert(CheckIfArmstrong('371'))
+assert(CheckIfArmstrong('407'))
+assert(CheckIfArmstrong('93084'))
+assert(not CheckIfArmstrong('15'))
+assert(not CheckIfArmstrong('208'))
+assert(not CheckIfArmstrong('735'))
+assert(not CheckIfArmstrong('900'))
+assert(not CheckIfArmstrong('5690'))
+'''
+# Ejercicio 12 -- Lo mismo que el anterior
+'''
+def CheckIfArmstrong(number):
+    result = False
+    number2 = 0
+    for i in range(len(str(number))):
+        number2+=int(str(number)[i])**(len(str(number)))
+    if number == number2:
+        result = True
+    return result
+
+n = int(input('Mínimo: '))
+m = int(input('Máximo: '))
+
+while n <= m:
+    if CheckIfArmstrong(n):
+        print(n)
+    n+=1
+'''
+# Ejercicio 13
+'''
+def ReplaceWords(phrase, word, wordReplace):
+    result = ''
+    rebuildword = ''
+    for i in range(len(phrase)):
+        if phrase[i] != ' ':
+            rebuildword+=phrase[i]
+        elif word == rebuildword:
+            result+=f'{wordReplace} '
+            rebuildword = ''
+        else:
+            result+=f'{rebuildword} '
+            rebuildword = ''
+    if word == rebuildword:
+        result+=wordReplace
+    else:
+        result+=rebuildword
+    return result
+
+assert(ReplaceWords('Esta frase es de prueba', 'frase', 'palabra') == 'Esta palabra es de prueba')
+assert(ReplaceWords('El huevo azul', 'azul', 'verde') == 'El huevo verde')
+assert(ReplaceWords('La cocina sucia', 'sucia', 'limpia') == 'La cocina limpia')
+assert(ReplaceWords('El perro que duerme', 'duerme', 'salta') != 'El perro que ladra')
+assert(ReplaceWords('Te gusta comer chocolate', 'chocolate', 'uvas') != 'Te gusta comer helado')
+assert(ReplaceWords('Quiero bailar toda la noche', 'bailar', 'dormir') != 'Quiero bailar todo el día')
+'''
+# Ejercicio 14
+'''
+def ReplaceWords(phrase, word, wordReplace, numReplace):
+    result = ''
+    rebuildword = ''
+    num = 0
+    for i in range(len(phrase)):
+        if phrase[i] != ' ':
+            rebuildword+=phrase[i]
+        elif word == rebuildword and num < numReplace:
+            result+=f'{wordReplace} '
+            rebuildword = ''
+            num+=1
+        else:
+            result+=f'{rebuildword} '
+            rebuildword = ''
+    if word == rebuildword and num < numReplace:
+        result+=wordReplace
+    else:
+        result+=rebuildword
+    return result
+
+assert(ReplaceWords('Queso Queso Queso Queso Queso Queso Queso', 'Queso', 'Chocolate', 3) == 'Chocolate Chocolate Chocolate Queso Queso Queso Queso')
+assert(ReplaceWords('Cara Cruz Cara Cruz Cara Cruz Cara', 'Cruz', 'Café', 2) == 'Cara Café Cara Café Cara Cruz Cara')
+assert(ReplaceWords('Marco Polo Polo Marco', 'Polo', 'Agua', 2) == 'Marco Agua Agua Marco')
+assert(ReplaceWords('El gato cantó el gato bailaba', 'gato', 'perro', 2) != 'El pajarito cantó el pajarito bailaba')
+assert(ReplaceWords('La lluvia cae, cae la hoja', 'cae', 'sube', 2) != 'La lluvia pesca, pesca la hoja')
+assert(ReplaceWords('Pato Pato Pato Pato Pato Pato Pato Oca Oca Pato Oca Ganso', 'Oca', 'Oso', 2) != 'Pato Pato Pato Pato Pato Pato Pato Gallina Gallina Pato Oca Ganso')
+'''
+# Ejercicio 15
+'''
+def hayVocal(frase):
+    resultado = 0
+    vocal = 'aeiou'
+    letra = 'bcdfghjklmnñpqrstvwxyz'
+    for i in range(len(frase)-1):
+        if frase[i].lower() in letra and frase[i+1].lower() in vocal:
+            resultado+=1
+    return resultado
+
+assert(hayVocal('Hola caracola') == 6)
+assert(hayVocal('Este ejemplo sirve') == 5)
+assert(hayVocal('Tambien este otro') == 4)
+assert(hayVocal('Este ejemplo esta mal') != 7)
+assert(hayVocal('Este otro tambien') != 50)
+assert(hayVocal('holaholahola') != 2)
+'''
+# Ejercicio 16
+'''
+def contarLetras(frase):
+    resultado = 0
+    acumulador = ''
+    letras = 'abcdefghijklmnñopqrstuvwxyz'
+    for i in range(len(frase)):
+        if frase[i].lower() in letras and frase[i].lower() not in acumulador:
+            resultado+=1
+            acumulador+=frase[i].lower()
+    return resultado
+
+assert(contarLetras('Hola Mundo') == 8)
+assert(contarLetras('El cafe me gusta descafeinado') == 14)
+assert(contarLetras('Voy a comprar una chaqueta vaqueta') == 14)
+assert(contarLetras('El tren llego tarde a la estacion') != 20)
+assert(contarLetras('El ordenador de mi hermana no tenia raton') != 15)
+assert(contarLetras('El pescado que comimos en el restaurante era fresco') != 15)
+'''
+# Ejercicio 17
+'''
+def deconstrucionDeCadena(frase):
+    consonante = ''
+    vocal = ''
+    for i in range(len(frase)):
+        if frase[i].lower() in 'aeiou':
+            vocal+=frase[i]
+        elif frase[i].lower() in 'bcdfghjklmnñpqrstvwxyz':
+            consonante+=frase[i]
+    return consonante+vocal
+
+assert(deconstrucionDeCadena('Curso de Programacion') == 'CrsdPrgrmcnuoeoaaio')
+assert(deconstrucionDeCadena('Tengo hambre') == 'Tnghmbreoae')
+assert(deconstrucionDeCadena('Pepe quiere hacer Taichi') == 'PpqrhcrTcheeuieeaeaii')
+assert(deconstrucionDeCadena('En la casa no hay luz') != 'La casa en la que no hay luz')
+assert(deconstrucionDeCadena('La manzana esta podrida') != 'Lmnznstpdrdaeiouaeiou')
+assert(deconstrucionDeCadena('La tele esta apagada') != 'bcdfghjkaaaa')
+'''
+# Ejercicio 18
+'''
+def contarPalabras(string):
+    contador = 0
+    for i in range(len(string)):
+        if string[i] != ' ' and (i == 0 or string[i-1] == ' '):
+            contador+=1
+    return contador
+
+assert(contarPalabras('Esto es un ejemplo') == 4)
+assert(contarPalabras('Fui a París en avión') == 5)
+assert(contarPalabras('La tarta de cumpleaños era de fresa') == 7)
+assert(contarPalabras('La pizza estaba fría') != 10)
+assert(contarPalabras('Ayer estuve en casa') != 2)
+assert(contarPalabras('No me llames que estoy ocupado') != -5)
+'''
